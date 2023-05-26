@@ -1,4 +1,5 @@
 #include <EEPROM.h>
+#include <MD5.h>
 
 struct Contact {
   char name[30];
@@ -95,9 +96,19 @@ void readContacts() {
     Serial.println(index);
     Serial.print("Name: ");
     Serial.println(contact.name);
+    hash(contact.name);
     Serial.print("Number: ");
     Serial.println(contact.number);
+    hash(contact.number);
   }
+}
+void hash(String stringInput){
+  unsigned char* hash=MD5::make_hash(stringInput.c_str());
+  char *md5str = MD5::make_digest(hash, 16);
+  free(hash);
+  Serial.print("Hashed:");
+  Serial.println(md5str);
+  free(md5str);
 }
 
 void updateContact() {
