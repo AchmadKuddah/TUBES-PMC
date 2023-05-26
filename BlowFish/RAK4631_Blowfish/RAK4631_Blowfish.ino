@@ -22,7 +22,7 @@ void hexDump(unsigned char *buf, uint16_t len) {
       }
     }
     uint8_t index = i / 16;
-    if (i < 256) Serial.write(' ');
+    if (i < 32) Serial.write(' ');
     Serial.print(index, HEX); Serial.write('.');
     Serial.print(s);
   }
@@ -35,22 +35,23 @@ void setup() {
   delay(2000);
   Serial.println("\nBlowfish test");
   CBlowFish bf;
-  BYTE plain[256];
-  BYTE encrypted[256];
-  BYTE decrypted[256];
-  BYTE myKey[17] = "YELLOW SUBMARINE";
+  const char* plain;
+  char encrypted[8];
+  char decrypted[8];
+  char myKey[8] = "Hellowww";
   Serial.println("\nmyKey");
-  hexDump(myKey, 16);
-  bf.Initialize(myKey, 16);
-  for (int i = 0; i < 256; i++) plain[i] = i;
+  hexDump(myKey, 8);
+  bf.Initialize(myKey, 8);
+  String text="ahmad";
+  plain=text.c_str();
   Serial.println("\nplain");
-  hexDump(plain, 256);
-  bf.Encode(plain, encrypted, 256);
+  hexDump(plain, 32);
+  bf.Encode(plain, encrypted, 32);
   Serial.println("\nEncrypted:");
-  hexDump(encrypted, 256);
-  bf.Decode(encrypted, decrypted, 256);
+  hexDump(encrypted, 32);
+  bf.Decode(encrypted, decrypted, 32);
   Serial.println("\nDecrypted:");
-  hexDump(decrypted, 256);
+  hexDump(decrypted, 32);
   Serial.println("\nTHE END");
 
   // void CBlowFish::Initialize(BYTE key[], int keybytes) {

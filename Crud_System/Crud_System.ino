@@ -1,5 +1,8 @@
 #include <EEPROM.h>
-#include <MD5.h>
+#include <SpritzCipher.h>
+
+const byte testMsg[8] = { 'A', 'B', 'C','A', 'B', 'C','A', 'B'};
+const byte testKey[8] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
 
 struct Contact {
   char name[30];
@@ -11,7 +14,7 @@ const int CONTACT_SIZE = sizeof(Contact);  // Size of each contact entry
 const int MAX_CONTACTS = EEPROM_SIZE / CONTACT_SIZE;  // Maximum number of contacts
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // Display the menu
   displayMenu();
@@ -58,10 +61,10 @@ void processChoice(int choice) {
 
 void createContact() {
   Serial.println("Enter name:");
-  while (Serial.available() == 0) {}  
+  while (Serial.available() == 0) {}
   String name = Serial.readString();
   Serial.println("Enter number:");
-  while (Serial.available() == 0) {}  
+  while (Serial.available() == 0) {}
   String number = Serial.readString();
 
   Contact newContact;
@@ -96,25 +99,59 @@ void readContacts() {
     Serial.println(index);
     Serial.print("Name: ");
     Serial.println(contact.name);
-    hash(contact.name);
+    byte byteArray[8];
+    memset(byteArray, 0, sizeof(byteArray));
+    strcpy((char *)byteArray,contact.name);
+    testFunc(byteArray, sizeof(byteArray), testKey, sizeof(testKey));
+    
     Serial.print("Number: ");
     Serial.println(contact.number);
-    hash(contact.number);
+    memset(byteArray, 0, sizeof(byteArray));
+    strcpy((char *)byteArray,contact.number);
+    testFunc(byteArray, sizeof(byteArray), testKey, sizeof(testKey));
   }
 }
-void hash(String stringInput){
-  unsigned char* hash=MD5::make_hash(stringInput.c_str());
-  char *md5str = MD5::make_digest(hash, 16);
-  free(hash);
-  Serial.print("Hashed:");
-  Serial.println(md5str);
-  free(md5str);
+void testFunc(const byte *msg, byte msgLen, const byte *key, byte keyLen){
+  spritz_ctx s_ctx;
+  byte buf[8]; /* Output buffer */
+  unsigned int i;
+
+  spritz_setup(&s_ctx, key, keyLen);
+  spritz_crypt(&s_ctx, msg, msgLen, buf);
+
+  /* Print Ciphertext */
+  Serial.print("encrypt: ");
+  for (i = 0; i < msgLen; i++) {
+    if (buf[i] < 0x10) { /* To print "0F" not "F" */
+      Serial.write('0');
+    }
+    Serial.print(buf[i], HEX);
+  }
+  Serial.println();
+
+  spritz_setup(&s_ctx, key, keyLen);
+  spritz_crypt(&s_ctx, buf, msgLen, buf);
+
+  /* Print MSG after decryption */
+  Serial.print("decrypt: ");
+  for (i = 0; i < msgLen; i++) {
+    Serial.write(buf[i]);
+  }
+  Serial.println();
+
+  /* Check the output */
+  if (spritz_compare(buf, msg, msgLen)) {
+    /* If the output is wrong "Alert" */
+    digitalWrite(LED_BUILTIN, HIGH); /* Turn pin LED_BUILTIN On (Most boards have this LED connected to digital pin 13) */
+    Serial.println("\n** WARNING: Output != Test_Vector **");
+  }
+  Serial.println();
 }
 
 void updateContact() {
   Serial.println("Enter contact index to update:");
-  while (Serial.available() == 0) {}  
-  String input=Serial.readString();
+  while (Serial.available() == 0) {}
+  String input = Serial.readString();
   int index = input.toInt();
 
   if (!isValidIndex(index)) {
@@ -123,10 +160,10 @@ void updateContact() {
   }
 
   Serial.println("Enter new name:");
-  while (Serial.available() == 0) {}  
+  while (Serial.available() == 0) {}
   String name = Serial.readString();
   Serial.println("Enter new number:");
-  while (Serial.available() == 0) {}  
+  while (Serial.available() == 0) {}
   String number = Serial.readString();
 
   int address = index * CONTACT_SIZE;
@@ -141,8 +178,8 @@ void updateContact() {
 
 void deleteContact() {
   Serial.println("Enter contact index to delete:");
-  while (Serial.available() == 0) {}  
-  String input=Serial.readString();
+  while (Serial.available() == 0) {}
+  String input = Serial.readString();
   int index = input.toInt();
 
   if (!isValidIndex(index)) {
