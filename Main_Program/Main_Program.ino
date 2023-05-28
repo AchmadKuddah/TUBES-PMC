@@ -1,8 +1,7 @@
 #include <EEPROM.h>
 #include <SpritzCipher.h>
 
-const byte testMsg[8] = { 'A', 'B', 'C','A', 'B', 'C','A', 'B'};
-const byte testKey[8] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
+const byte Key[8] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
 
 struct Contact {
   char name[30];
@@ -102,16 +101,16 @@ void readContacts() {
     byte byteArray[8];
     memset(byteArray, 0, sizeof(byteArray));
     strcpy((char *)byteArray,contact.name);
-    testFunc(byteArray, sizeof(byteArray), testKey, sizeof(testKey));
+    crypt(byteArray, sizeof(byteArray), Key, sizeof(Key));
     
     Serial.print("Number: ");
     Serial.println(contact.number);
     memset(byteArray, 0, sizeof(byteArray));
     strcpy((char *)byteArray,contact.number);
-    testFunc(byteArray, sizeof(byteArray), testKey, sizeof(testKey));
+    crypt(byteArray, sizeof(byteArray), Key, sizeof(Key));
   }
 }
-void testFunc(const byte *msg, byte msgLen, const byte *key, byte keyLen){
+void crypt(const byte *msg, byte msgLen, const byte *key, byte keyLen){
   spritz_ctx s_ctx;
   byte buf[8]; /* Output buffer */
   unsigned int i;
