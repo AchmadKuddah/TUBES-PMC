@@ -1,7 +1,7 @@
 #include <EEPROM.h>
 #include <SpritzCipher.h>
 
-const byte Key[8] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
+const byte Key[8] = {'a','h','p','r','s','t','d','8'};
 
 struct Contact {
   char name[30];
@@ -140,9 +140,7 @@ void crypt(const byte *msg, byte msgLen, const byte *key, byte keyLen){
 
   /* Check the output */
   if (spritz_compare(buf, msg, msgLen)) {
-    /* If the output is wrong "Alert" */
-    digitalWrite(LED_BUILTIN, HIGH); /* Turn pin LED_BUILTIN On (Most boards have this LED connected to digital pin 13) */
-    Serial.println("\n** WARNING: Output != Test_Vector **");
+    Serial.println("Output != Test_Vector");
   }
   Serial.println();
 }
