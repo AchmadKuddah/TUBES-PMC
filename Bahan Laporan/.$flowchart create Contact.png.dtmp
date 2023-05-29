@@ -1,0 +1,80 @@
+<mxfile host="Electron" modified="2023-05-29T03:24:08.563Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="P0B5aRwhVPD9Sa1TCVhF" version="21.2.1" type="device">
+  <diagram name="Page-1" id="fVlSt9qrdhkbJXrA3Rsz">
+    <mxGraphModel dx="472" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-1" target="2HRR8s5OSZ3BQ0gMYK8u-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="405" y="50" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-2" target="2HRR8s5OSZ3BQ0gMYK8u-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-2" value="input nama dan &lt;br&gt;nomor yang akan dimasukkan pada memori" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="358" y="120" width="135" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-4" target="2HRR8s5OSZ3BQ0gMYK8u-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-4" value="mengubah bentukan input menjadi bentuk string dan memasukkan hasil ke dalam struct Contact&amp;nbsp;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="353.25" y="230" width="144.5" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-6" target="2HRR8s5OSZ3BQ0gMYK8u-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-6" value="index =&amp;nbsp;&lt;br&gt;findEmptyContactIndex()" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
+          <mxGeometry x="333.25" y="330" width="184.5" height="62.5" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-8" target="2HRR8s5OSZ3BQ0gMYK8u-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-8" target="2HRR8s5OSZ3BQ0gMYK8u-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="460" />
+              <mxPoint x="530" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-8" value="index = -1" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="386" y="420" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WRIwO3scPxKARuWr0otR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-10" target="2HRR8s5OSZ3BQ0gMYK8u-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="556" />
+              <mxPoint x="560" y="280" />
+              <mxPoint x="615" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-10" value="error full memori" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="365.5" y="526.25" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-12" value="True" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="425.5" y="496.25" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-13" target="2HRR8s5OSZ3BQ0gMYK8u-17" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="615" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-13" value="address = index*contact size&lt;br&gt;//untuk memnemukan address yang dituju" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="550" y="80" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2HRR8s5OSZ3BQ0gMYK8u-17" target="2HRR8s5OSZ3BQ0gMYK8u-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-17" value="masukkan data kedalam EEPROM&lt;br&gt;dengan posisi &lt;br&gt;address" style="shape=internalStorage;whiteSpace=wrap;html=1;backgroundOutline=1;labelPosition=center;verticalLabelPosition=middle;align=right;verticalAlign=bottom;horizontal=1;" parent="1" vertex="1">
+          <mxGeometry x="552.5" y="170" width="125" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="2HRR8s5OSZ3BQ0gMYK8u-18" value="Stop" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="592.5" y="300" width="45" height="45" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
